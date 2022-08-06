@@ -1,13 +1,19 @@
-import { Autocomplete, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
-export function SearchInput(): JSX.Element {
+export type SearchInputProps = {
+    value: string;
+    onChange: (s: string) => void;
+};
+
+export function SearchInput(props: SearchInputProps): JSX.Element {
+    const { value, onChange } = props;
+
     return (
-        <Autocomplete
-            options={[]}
-            filterOptions={x => x}
-            renderInput={params => (
-                <TextField {...params} label="Search User" />
-            )}
-        ></Autocomplete>
+        <TextField
+            id="search"
+            label="Search Github Users"
+            value={value}
+            onChange={e => onChange && onChange(e.currentTarget.value)}
+        />
     );
 }

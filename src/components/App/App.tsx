@@ -1,11 +1,16 @@
 import "./App.css";
-import { SearchInput } from "../SearchInput/SearchInput";
 import { CssBaseline } from "@mui/material";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { LandingPage } from "../LandingPage/LandingPage";
+
+const queryClient = new QueryClient();
 
 function App() {
     return (
         <CssBaseline>
-            <SearchInput />
+            <QueryClientProvider client={queryClient}>
+                <LandingPage />
+            </QueryClientProvider>
         </CssBaseline>
     );
 }
