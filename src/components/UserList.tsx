@@ -2,8 +2,8 @@ import { Box, Card, CircularProgress, List } from "@mui/material";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery } from "react-query";
-import { parseLinkRelations, queryUsersByUsername } from "../../api";
-import { UserListItem } from "../UserListItem";
+import { parseLinkRelations, queryUsersByUsername } from "../api";
+import { UserListItem } from "./UserListItem";
 
 export type UserListProps = {
     queryInput: string;

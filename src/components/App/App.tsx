@@ -1,7 +1,7 @@
 import "./App.css";
 import { CssBaseline } from "@mui/material";
 import { QueryClientProvider, QueryClient } from "react-query";
-import { LandingPage } from "../LandingPage/LandingPage";
+import { LandingPage } from "../LandingPage";
 import { FavUsersProvider } from "../../context/FavoriteUsersContext";
 
 const queryClient = new QueryClient();

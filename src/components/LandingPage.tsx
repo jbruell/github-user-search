@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import debounce from "lodash.debounce";
 import { useState } from "react";
-import { SearchInput } from "../SearchInput/SearchInput";
-import { UserList } from "../UserList/UserList";
+import { SearchInput } from "./SearchInput";
+import { UserList } from "./UserList";
 
 export function LandingPage() {
     const [queryInput, setQueryInput] = useState("");

@@ -1,46 +1,34 @@
-import { Star, StarBorder } from "@mui/icons-material";
 import {
     Avatar,
     Divider,
-    IconButton,
-    Link,
     ListItem,
     ListItemAvatar,
     ListItemButton,
     ListItemText
 } from "@mui/material";
+import { useState } from "react";
 import { User } from "../api";
-import {
-    FavUsersProvider,
-    useFavoriteUsers
-} from "../context/FavoriteUsersContext";
+import { FavUsersProvider } from "../context/FavoriteUsersContext";
+import { DetailDialog } from "./DetailDialog";
+import { FavoriteButton } from "./FavoriteButton";
 
 export type UserListItemProps = {
     user: User;
 };
 
 export function UserListItem(props: UserListItemProps) {
-    const {
-        user: { id, avatar_url, login }
-    } = props;
+    const { user } = props;
+    const { id, avatar_url, login } = user;
 
-    const [isFavorite, add, remove] = useFavoriteUsers();
-
-    function onFavoriteBtnClick() {
-        isFavorite(id) ? remove(id) : add(id);
-    }
+    const [open, setOpen] = useState(false);
 
     return (
         <FavUsersProvider>
             <ListItem
                 disablePadding
-                secondaryAction={
-                    <IconButton onClick={onFavoriteBtnClick}>
-                        {isFavorite(id) ? <Star /> : <StarBorder />}
-                    </IconButton>
-                }
+                secondaryAction={<FavoriteButton id={id} />}
             >
-                <ListItemButton>
+                <ListItemButton onClick={() => setOpen(true)}>
                     <ListItemAvatar>
                         <Avatar src={avatar_url} alt={login} />
                     </ListItemAvatar>
@@ -48,6 +36,11 @@ export function UserListItem(props: UserListItemProps) {
                 </ListItemButton>
             </ListItem>
             <Divider variant="inset" component="li" />
+            <DetailDialog
+                open={open}
+                onBackgroundClick={() => setOpen(false)}
+                user={user}
+            />
         </FavUsersProvider>
     );
 }
