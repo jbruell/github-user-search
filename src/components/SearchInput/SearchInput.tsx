@@ -11,6 +11,10 @@ export function SearchInput(props: SearchInputProps): JSX.Element {
         <TextField
             id="search"
             label="Search Github Users"
+            sx={{
+                width: "100%",
+                maxWidth: "50ch"
+            }}
             onChange={e => onChange && onChange(e.currentTarget.value)}
         />
     );
