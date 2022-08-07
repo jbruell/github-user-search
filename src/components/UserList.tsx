@@ -30,8 +30,7 @@ export function UserList(props: UserListProps) {
             elevation={3}
             sx={{
                 width: "75%",
-                mt: "4rem",
-                overflowY: "scroll"
+                mt: "4rem"
             }}
         >
             <>
@@ -59,6 +58,7 @@ export function UserList(props: UserListProps) {
                                 <CircularProgress />
                             </Box>
                         }
+                        height="60vh"
                         // below props only if you need pull down functionality
                         refreshFunction={refetch}
                         pullDownToRefresh
