@@ -62,4 +62,6 @@ export type GithubResponse<T> = {
 export type User = {
     id: number;
     login: string;
+    avatar_url: string;
+    url: string;
 };
